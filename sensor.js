@@ -5,8 +5,6 @@ const sensor = require("node-dht-sensor").promises;
 const pets = require("./pets.json");
 
 async function pollSensors() {
-  const { temperature, humidity } = await sensor.read(22, 4);
-
   await Promise.all(pets.map(async ({ petId, sensors }) => {
     const readings = await Promise.all(sensors.map(async ({type, pin}) => {
       const reading = await sensor.read(type, pin);
