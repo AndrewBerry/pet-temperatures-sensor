@@ -55,4 +55,5 @@ async function pollSensors() {
   }));
 }
 
-setInterval(pollSensors, 5000);
+setInterval(pollSensors, 300000);
+pollSensors();
