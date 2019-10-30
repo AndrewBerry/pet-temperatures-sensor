@@ -15,8 +15,6 @@ async function pollSensors() {
       }
     }));
 
-    console.log(petId, readings);
-
     function getMinMax(readings, isHigh) {
       return readings.reduce((minMax, reading) => {
         const { temperature } = reading;
@@ -39,7 +37,13 @@ async function pollSensors() {
     }, 0);
     const humidity = humiditySum / readings.length;
 
-    axios.post(
+    console.log(petId);
+    console.log(`  High:      ${high}`);
+    console.log(`  Low:       ${low}`);
+    console.log(`  Humidity:  ${humidity}`);
+    console.log("\n");
+
+    await axios.post(
       `${process.env.FIREBASE_FUNCTIONS_BASE}/submitDataPoint`,
       {
         petId,
@@ -47,7 +51,7 @@ async function pollSensors() {
         low,
         humidity
       }
-    )
+    );
   }));
 }
 
