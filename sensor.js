@@ -9,15 +9,11 @@ async function pollSensors() {
     const readings = await Promise.all(sensors.map(async ({type, pin}) => {
       const reading = await sensor.read(type, pin);
 
-      console.log("\nreading:", reading, "\n");
-
       return {
         temperature: reading.temperature.toFixed(1),
         humidity: reading.humidity
       }
     }));
-
-    console.log("\nreadings:", readings, "\n");
 
     function getMinMax(readings, isHigh) {
       return readings.reduce((minMax, reading) => {
@@ -39,9 +35,6 @@ async function pollSensors() {
     const humiditySum = readings.reduce((humidity, reading) => {
       return humidity + reading.humidity;
     }, 0);
-
-    console.log(humiditySum);
-    console.log(readings.length);
 
     const humidity = (humiditySum / readings.length).toFixed(1);
 
