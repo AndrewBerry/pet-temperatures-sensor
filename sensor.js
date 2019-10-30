@@ -13,7 +13,7 @@ async function pollSensors() {
 
       return {
         temperature: reading.temperature.toFixed(1),
-        humidity: reading.humidity.toFixed(1),
+        humidity: reading.humidity
       }
     }));
 
@@ -43,7 +43,7 @@ async function pollSensors() {
     console.log(humiditySum);
     console.log(readings.length);
 
-    const humidity = humiditySum / readings.length;
+    const humidity = (humiditySum / readings.length).toFixed(1);
 
     console.log(petId);
     console.log(`  High:      ${high}`);
