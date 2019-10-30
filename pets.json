@@ -1,0 +1,28 @@
+[
+  {
+    "petId": "bassi",
+    "sensors": [
+      {
+        "type": 22,
+        "pin": 17
+      },
+      {
+        "type": 22,
+        "pin": 18
+      }
+    ]
+  },
+  {
+    "petId": "cynthia",
+    "sensors": [
+      {
+        "type": 22,
+        "pin": 4
+      },
+      {
+        "type": 22,
+        "pin": 14
+      }
+    ]
+  }
+]
