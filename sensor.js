@@ -9,7 +9,12 @@ async function pollSensors() {
 
   await Promise.all(pets.map(async ({ petId, sensors }) => {
     const readings = await Promise.all(sensors.map(async ({type, pin}) => {
-      return await sensor.read(type, pin);
+      const reading = await sensor.read(type, pin);
+
+      return {
+        temperature: reading.temperature.toFixed(1),
+        humidity: reading.humidity.toFixed(1),
+      }
     }));
 
     console.log(petId, readings);
