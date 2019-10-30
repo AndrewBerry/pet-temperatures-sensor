@@ -39,6 +39,10 @@ async function pollSensors() {
     const humiditySum = readings.reduce((humidity, reading) => {
       return humidity + reading.humidity;
     }, 0);
+
+    console.log(humiditySum);
+    console.log(readings.length);
+
     const humidity = humiditySum / readings.length;
 
     console.log(petId);
