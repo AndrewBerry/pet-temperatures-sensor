@@ -53,4 +53,4 @@ async function pollSensors() {
   }));
 }
 
-setTimeout(pollSensors, 5000);
+setInterval(pollSensors, 5000);
